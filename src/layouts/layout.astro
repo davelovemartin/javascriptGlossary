@@ -1,0 +1,23 @@
+---
+interface Props {
+    title: string;
+    description?: string;
+    children: any;
+}
+const { title, description } = Astro.props.frontmatter || Astro.props;
+---
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{title}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="content-security-policy" content="default-src https:">
+        <meta name="description" content={description}>
+        <meta name="robots" content="index, follow" />
+        <meta name="theme-color" content="#fdf8ec">
+    </head>
+    <body>
+        <h1>{title}</h1>
+        <slot />
+    </body>
+</html>
