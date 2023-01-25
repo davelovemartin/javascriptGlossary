@@ -1,6 +1,18 @@
 ---
+import { getCollection } from 'astro:content';
+const terms = await getCollection('terms');
 import Layout from "../layouts/layout.astro"
 ---
 <Layout title="javascriptGlossary" description="a glossary of javascript terms">
 <p>Hello, world!</p>
+<ul>
+    {
+        terms.map(term => (
+            <li>
+                <a>{term.data.title}</a>
+                <p>{term.data.description}</p>
+            </li>
+        ))
+    }
+</ul>
 </Layout>
