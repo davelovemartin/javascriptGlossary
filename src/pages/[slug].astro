@@ -1,0 +1,15 @@
+---
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const terms = await getCollection('terms');
+    return terms.map(term => ({
+        params: { slug: term.slug }, props: { term },
+    }));
+}
+
+const { term } = Astro.props;
+const { Content } = await term.render();
+---
+<h1>{term.data.title}</h1>
+<Content />

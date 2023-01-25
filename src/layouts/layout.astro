@@ -1,9 +1,12 @@
 ---
+import { Title } from 'src/components/Title/Title';
+
 interface Props {
     title: string;
     description?: string;
     children: any;
 }
+
 const { title, description } = Astro.props.frontmatter || Astro.props;
 ---
 <html lang="en">
@@ -17,7 +20,7 @@ const { title, description } = Astro.props.frontmatter || Astro.props;
         <meta name="theme-color" content="#fdf8ec">
     </head>
     <body>
-        <h1>{title}</h1>
+        <Title title={title} />
         <slot />
     </body>
 </html>
